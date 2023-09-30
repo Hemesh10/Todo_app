@@ -4,6 +4,7 @@ import { CentralizedData } from "./components/Provider/Contect";
 import Header from "./components/Header/Header";
 import Tasks from "./components/Tasks/Tasks";
 import EditModal from "./components/Modal/EditModal";
+import toast from "react-hot-toast";
 
 const LOCAL_STORAGE_KEY = "todo_app_using_vite_and_react";
 
@@ -16,22 +17,26 @@ function App() {
     setTaskContentToUpdate,
   } = useContext(CentralizedData);
 
-  // const loadSavedTasks = () => {
-  //   const savedTasks = localStorage.getItem(LOCAL_STORAGE_KEY);
+  const wait = async (ms) => {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  };
 
-  //   if (savedTasks) {
-  //     setTasks(JSON.parse(savedTasks));
-  //   }
-  // };
+  const loadSavedTasks = () => {
+    const savedTasks = localStorage.getItem(LOCAL_STORAGE_KEY);
+
+    if (savedTasks) {
+      setTasks(JSON.parse(savedTasks));
+    }
+  };
 
   const setTaskAndSave = (newTasks) => {
     setTasks(newTasks);
-    // localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newTasks));
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newTasks));
   };
 
-  // useEffect(() => {
-  //   loadSavedTasks();
-  // }, []);
+  useEffect(() => {
+    loadSavedTasks();
+  }, []);
 
   const addNewTask = (taskContent) => {
     setTaskAndSave([
@@ -50,10 +55,12 @@ function App() {
     setTaskContentToUpdate(taskContent);
   };
 
-  const deleteTaskById = (taskId, taskStatus) => {
+  const deleteTaskById = async (taskId, taskStatus) => {
     if (taskStatus) {
       const updatedTasks = tasks.filter((task) => task.id !== taskId);
       setTasks(updatedTasks);
+      await wait(250);
+      toast.success("Task Deleted");
     }
   };
 

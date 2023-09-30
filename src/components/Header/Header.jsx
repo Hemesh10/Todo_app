@@ -1,5 +1,6 @@
 import { useState } from "react";
 import check_icon from "../../assets/images/check_icon.png";
+import toast from "react-hot-toast";
 
 const Header = ({ handleAddTask }) => {
   const [taskContent, setTaskContent] = useState("");
@@ -11,7 +12,7 @@ const Header = ({ handleAddTask }) => {
       handleAddTask(taskContent);
       setTaskContent("");
     } else {
-      alert("Invalid Input");
+      toast.error("Invalid Input");
       return;
     }
   };
