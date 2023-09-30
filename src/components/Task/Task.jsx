@@ -1,11 +1,7 @@
 /* eslint-disable no-unused-vars */
-import { useContext } from "react";
-import { CentralizedData } from "../Provider/Contect";
 import { AlertDialog, Button, Flex } from "@radix-ui/themes";
 
 const Task = ({ task, deleteHandler, updateHandler, onComplete }) => {
-  const { setModal } = useContext(CentralizedData);
-
   // const editHandler = () => {
   //   console.log("Hey");
   //   // console.log(taskContent);
@@ -13,7 +9,7 @@ const Task = ({ task, deleteHandler, updateHandler, onComplete }) => {
   // };
 
   return (
-    <div className="w-full flex justify-between items-start pt-4 px-4 pb-3  rounded-lg gap-10 border-[1px] border-[#333333] bg-[#262626]">
+    <div className="w-full flex justify-between items-start pt-4 px-4 pb-3 rounded-lg gap-10 border-[1px] border-[#333333] bg-[#262626]">
       <div className="flex items-center gap-[2vmin]">
         <button onClick={() => onComplete(task.id)} className="w-5 h-5 bg-none">
           {task.isCompleted ? (
@@ -32,7 +28,7 @@ const Task = ({ task, deleteHandler, updateHandler, onComplete }) => {
           {task.content}
         </p>
       </div>
-      <div className="space-x-12">
+      <div className="space-x-6 sm:space-x-9">
         {!task.isCompleted ? (
           <button
             onClick={() => updateHandler(task.id, task.content)}
@@ -41,9 +37,7 @@ const Task = ({ task, deleteHandler, updateHandler, onComplete }) => {
             <i className="ri-edit-line text-lg"></i>
           </button>
         ) : (
-          <button
-            className="bg-none border-none text-slate-200 pointer-events-none opacity-50"
-          >
+          <button className="bg-none border-none text-slate-200 pointer-events-none opacity-50">
             <i className="ri-edit-line text-lg"></i>
           </button>
         )}
