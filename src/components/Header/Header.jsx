@@ -21,7 +21,7 @@ const Header = ({ tasks, handleAddTask }) => {
       <div className="flex items-center gap-4 -translate-y-2 sm:translate-y-0">
         <img src={check_icon} alt="icon" className="w-8 sm:w-10" />
         <h1 className="text-2xl font-black tracking-wide bg-gradient-to-r bg-clip-text text-transparent from-violet-400 to-blue-400">
-          ToDo App
+          ToDo Application
         </h1>
       </div>
       <form
