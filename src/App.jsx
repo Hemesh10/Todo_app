@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useState, useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { CentralizedData } from "./components/Provider/Contect";
 import Header from "./components/Header/Header";
 import Tasks from "./components/Tasks/Tasks";
@@ -59,6 +59,7 @@ function App() {
     if (taskStatus) {
       const updatedTasks = tasks.filter((task) => task.id !== taskId);
       setTasks(updatedTasks);
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedTasks));
       await wait(250);
       toast.success("Task Deleted");
     }

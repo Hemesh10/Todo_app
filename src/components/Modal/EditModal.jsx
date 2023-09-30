@@ -21,6 +21,7 @@ const EditModal = ({ tasks }) => {
     const updatedTask = event.target.editedTask.value;
 
     if (updatedTask) {
+      console.log(taskContentToUpdate);
       tasks[index].content = updatedTask;
       setModal(false);
       await wait(250);

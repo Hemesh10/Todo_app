@@ -9,8 +9,8 @@ const Task = ({ task, deleteHandler, updateHandler, onComplete }) => {
   // };
 
   return (
-    <div className="w-full flex justify-between items-start pt-4 px-4 pb-3 rounded-lg gap-10 border-[1px] border-[#333333] bg-[#262626]">
-      <div className="flex items-center gap-[2vmin]">
+    <div className="w-full flex justify-between items-center pt-4 px-4 pb-3 rounded-lg border-[1px] border-[#333333] bg-[#262626]">
+      <div className="flex items-center">
         <button onClick={() => onComplete(task.id)} className="w-5 h-5 bg-none">
           {task.isCompleted ? (
             <i className="ri-check-line text-lg w-full h-full rounded-full bg-indigo-600 p-[1px] text-white"></i>
@@ -22,7 +22,7 @@ const Task = ({ task, deleteHandler, updateHandler, onComplete }) => {
           className={
             task.isCompleted
               ? "text-slate-200 line-through opacity-75"
-              : "text-slate-200"
+              : "text-slate-200 max-w-[12rem] sm:max-w-sm md:max-w-lg ml-2 sm:ml-4 break-words"
           }
         >
           {task.content}
