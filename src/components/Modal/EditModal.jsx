@@ -25,7 +25,7 @@ const EditModal = ({ tasks }) => {
       tasks[index].content = updatedTask;
       setModal(false);
       await wait(250);
-      toast.success("Task Edited");
+      toast.success("Task Updated Successfully");
     } else {
       toast.error("Cannot leave the tast empty");
     }
@@ -35,7 +35,7 @@ const EditModal = ({ tasks }) => {
     <>
       {modal && (
         <div
-          className={`absolute z-10 w-full h-screen bg-blue-950/30 backdrop-blur-[2px] transition-all`}
+          className={`absolute z-10 w-full h-screen bg-indigo-950/25 transition-all`}
         >
           <div className="w-full h-full flex justify-center items-center">
             <div className="box w-full sm:w-[450px] flex flex-col gap-4 border-[1px] rounded-md px-2 py-4 bg-white">
@@ -53,16 +53,16 @@ const EditModal = ({ tasks }) => {
                 />
                 <div className="btns flex justify-end gap-4">
                   <button
-                    className="px-3 h-9 rounded-md bg-red-500 bg-opacity-95 hover:bg-opacity-100"
+                    className="px-3 h-9 rounded-md bg-blue-100 bg-opacity-75 hover:bg-opacity-100"
                     onClick={() => setModal(false)}
                   >
-                    <p className="text-base text-white">Cancel</p>
+                    <p className="text-sm font-medium text-blue-500">Cancel</p>
                   </button>
                   <button
-                    className="px-3 rounded-md bg-blue-600 bg-opacity-95 hover:bg-opacity-100"
+                    className="px-3 rounded-md bg-blue-600 bg-opacity-90 hover:bg-opacity-100"
                     type="submit"
                   >
-                    <p className="text-base text-white">Update</p>
+                    <p className="text-sm font-medium text-white">Update</p>
                   </button>
                 </div>
               </form>

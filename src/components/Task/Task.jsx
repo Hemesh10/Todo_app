@@ -13,7 +13,9 @@ const Task = ({ task, deleteHandler, updateHandler, onComplete }) => {
       <div className="flex items-center">
         <button onClick={() => onComplete(task.id)} className="w-5 h-5 bg-none">
           {task.isCompleted ? (
-            <i className="ri-check-line text-lg w-full h-full rounded-full bg-indigo-600 p-[1px] text-white"></i>
+            <div className="w-full h-full -translate-y-1">
+              <i className="ri-check-line text-lg rounded-full bg-indigo-600 p-[1px] text-white"></i>
+            </div>
           ) : (
             <div className="w-full h-full rounded-full border-[1px] border-blue-500" />
           )}
@@ -21,7 +23,7 @@ const Task = ({ task, deleteHandler, updateHandler, onComplete }) => {
         <p
           className={
             task.isCompleted
-              ? "text-slate-200 line-through opacity-75"
+              ? "text-slate-200 line-through opacity-75 ml-2 sm:ml-4"
               : "text-slate-200 max-w-[12rem] sm:max-w-sm md:max-w-lg ml-2 sm:ml-4 break-words"
           }
         >

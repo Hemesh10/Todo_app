@@ -2,7 +2,7 @@ import { useState } from "react";
 import check_icon from "../../assets/images/check_icon.png";
 import toast from "react-hot-toast";
 
-const Header = ({ handleAddTask }) => {
+const Header = ({ tasks, handleAddTask }) => {
   const [taskContent, setTaskContent] = useState("");
 
   const SubmitHandler = (event) => {
@@ -20,7 +20,9 @@ const Header = ({ handleAddTask }) => {
     <header className="w-full h-[125px] sm:h-[200px] relative flex justify-center items-center px-4 bg-[#0D0D0D] text-white">
       <div className="flex items-center gap-4 -translate-y-2 sm:translate-y-0">
         <img src={check_icon} alt="icon" className="w-8 sm:w-10" />
-        <h1 className="text-lg tracking-wide">ToDo App</h1>
+        <h1 className="text-2xl font-black tracking-wide bg-gradient-to-r bg-clip-text text-transparent from-violet-400 to-blue-400">
+          ToDo App
+        </h1>
       </div>
       <form
         onSubmit={SubmitHandler}
@@ -30,7 +32,7 @@ const Header = ({ handleAddTask }) => {
           type="text"
           value={taskContent}
           onChange={(e) => setTaskContent(e.target.value)}
-          placeholder="Add a new task"
+          placeholder={tasks.length > 0 ? "Add a new task" : "Create a task"}
           className="h-full w-full flex-1 rounded-lg py-4 px-3 text-base border-[1px] border-[#0D0D0D] text-white bg-[#262626]"
         />
         <button

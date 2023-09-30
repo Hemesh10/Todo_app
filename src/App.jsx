@@ -61,7 +61,7 @@ function App() {
       setTasks(updatedTasks);
       localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedTasks));
       await wait(250);
-      toast.success("Task Deleted");
+      toast.success("Task Deleted Successfully");
     }
   };
 
@@ -81,7 +81,7 @@ function App() {
   return (
     <main className="w-full min-h-screen bg-[#191919]">
       <EditModal tasks={tasks} />
-      <Header handleAddTask={addNewTask} />
+      <Header tasks={tasks} handleAddTask={addNewTask} />
       <Tasks
         tasks={tasks}
         deleteHandler={deleteTaskById}
