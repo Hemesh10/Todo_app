@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { CentralizedData } from "../Provider/Contect";
 import toast from "react-hot-toast";
 
+const LOCAL_STORAGE_KEY = "todo_app_using_vite_and_react";
+
 const EditModal = ({ tasks }) => {
   const {
     modal,
@@ -21,8 +23,19 @@ const EditModal = ({ tasks }) => {
     const updatedTask = event.target.editedTask.value;
 
     if (updatedTask) {
-      console.log(taskContentToUpdate);
       tasks[index].content = updatedTask;
+      const localStorageContent = localStorage.todo_app_using_vite_and_react
+        .split(taskIdToUpdate)[1]
+        .split(":")[1]
+        .split(",")[0]
+        .split('"')[1];
+
+      const newLocalStoregeContent =
+        localStorage.todo_app_using_vite_and_react.replace(
+          localStorageContent,
+          updatedTask
+        );
+      localStorage.setItem(LOCAL_STORAGE_KEY, newLocalStoregeContent);
       setModal(false);
       await wait(250);
       toast.success("Task Updated Successfully");
